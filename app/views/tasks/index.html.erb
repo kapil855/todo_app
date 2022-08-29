@@ -1,0 +1,38 @@
+
+<% @tasks.each do |task|%>
+  <ul>
+    <li>Title: <%= task.title %></li>
+    <li>Body: <%= task.body %></li>
+    <li>Start Date: <%= task.start_date %></li>
+    <li>End Date: <%= task.end_date %></li>
+    <li><%= link_to 'Edit', edit_task_path(task) %></li>
+  </ul>
+<% end %>
+
+
+
+<%= form_with model: @task do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <div>
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+  <div>
+    <%#= form.label :duration %>
+    <%#= form.select :week, options_for_select(Task::WEEK) %>
+  </div>
+  <div>
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
